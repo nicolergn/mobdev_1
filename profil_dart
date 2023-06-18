@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+
+const Color darkBrown = Color(0xFF313131);
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: darkBrown,
+      ),
+      debugShowCheckedModeBanner: false,
+      home: MyWidget(),
+    );
+  }
+}
+
+class MyWidget extends StatelessWidget {
+  final String profilePictureURL =
+      "https://avatars.githubusercontent.com/u/130779234?v=4";
+  final String profileName = 'Nicole Regina Pakiding';
+  final String profileTitle = 'Anggota Div. Mobile Dev';
+  final String profileNIM = '220211060106';
+  final String profileDescription = 'Mahasiswa Baru';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('My Profile'),
+        centerTitle: true,
+        backgroundColor: const Color(0xFF424242),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 75,
+              backgroundImage: NetworkImage(profilePictureURL),
+            ),
+            const SizedBox(height: 15),
+            Text(
+              profileName,
+              style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 15),
+            Text(
+              profileTitle,
+              style: const TextStyle(fontSize: 15, color: Colors.grey),
+            ),
+            const SizedBox(height: 15),
+            Text(profileDescription),
+          ],
+        ),
+      ),
+    );
+  }
+}
